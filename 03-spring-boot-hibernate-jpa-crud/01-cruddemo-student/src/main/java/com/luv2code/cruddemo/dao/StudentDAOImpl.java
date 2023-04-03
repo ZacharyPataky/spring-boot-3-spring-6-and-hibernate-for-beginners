@@ -35,6 +35,17 @@ public class StudentDAOImpl implements  StudentDAO {
         entityManager.merge(theStudent);
     }
 
+    // Implement the Delete method
+    @Transactional
+    @Override
+    public void delete(Integer id) {
+        // Retrieve the Student
+        Student theStudent = entityManager.find(Student.class, id);
+
+        // Delete the Student
+        entityManager.remove(theStudent);
+    }
+
     @Override
     public Student findById(Integer id) {
         return entityManager.find(Student.class, id);
@@ -60,6 +71,15 @@ public class StudentDAOImpl implements  StudentDAO {
 
         // Return Query Results
         return theQuery.getResultList();
+    }
+
+    @Transactional
+    @Override
+    public int deleteAll() {
+        int numRowsDeleted = entityManager.createQuery(
+                "DELETE FROM Student").executeUpdate();
+
+        return numRowsDeleted;
     }
 
 }
