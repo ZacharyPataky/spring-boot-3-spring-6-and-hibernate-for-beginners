@@ -24,7 +24,6 @@ VALUES
 ('mary','{noop}test123',1),
 ('susan','{noop}test123',1);
 
-
 --
 -- Table structure for table `authorities`
 --
